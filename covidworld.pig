@@ -21,15 +21,20 @@ result = filter cv by deaths == max_deaths.X;
 
 country_cv = group cv by country;
 
--- Finding total death cases by country ordered by highest no. of deaths
+-- Finding top 5 total death cases by country ordered by highest no. of deaths
 total_deaths_by_country = foreach country_cv generate group as country, SUM(cv.deaths) as total_deaths;
 X = order total_deaths_by_country by total_deaths desc;
+Result1 = LIMIT X 5;  
+dump Result1;
 
--- Finding total cured cases by country ordered by highest no. of cured
+-- Finding top 5 total cured cases by country ordered by highest no. of cured
 total_recovered_by_country = foreach country_cv generate group as country, SUM(cv.recovered) as total_recovered;
 Y = order total_recovered_by_country by total_recovered desc;
+Result2 = LIMIT Y 5;  
+dump Result2;
 
--- Finding total confirmed cases by country ordered by highest no. of confirmed
+-- Finding top 5 total confirmed cases by country ordered by highest no. of confirmed
 total_confirmed_by_country = foreach country_cv generate group as country, SUM(cv.confirmed) as total_confirmed;
 Z = order total_confirmed_by_country by total_confirmed desc;
-dump Z;
+Result3 = LIMIT Z 5;  
+dump Result3;
