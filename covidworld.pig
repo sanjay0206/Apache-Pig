@@ -1,5 +1,5 @@
 -- loading the covid-19 dataset
-cv = load '/PigInput/covidworld.csv' using PigStorage(',') as (date:chararray, country:chararray, confirmed:int, recovered:int, deaths:int);
+cv = load '/PigInput/covid-world.csv' using PigStorage(',') as (date:chararray, country:chararray, confirmed:int, recovered:int, deaths:int);
 
 -- creating bags for the data to perform aggregate functions
 grp_cv = group cv all;
