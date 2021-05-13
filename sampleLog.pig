@@ -1,4 +1,4 @@
-log = LOAD '/PigInput/sample.log';
+log = LOAD '/Dataset/sample.log';
 LEVELS = foreach log generate REGEX_EXTRACT($0, '(TRACE|DEBUG|INFO|WARN|FATAL)', 1) as LOGLEVEL;
 FILTEREDLEVELS = FILTER LEVELS by LOGLEVEL is not null;
 GROUPLEVELS = GROUP FILTEREDLEVELS by LOGLEVEL;
